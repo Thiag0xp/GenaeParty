@@ -2,325 +2,235 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GEANE PARTY | Official Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEANE PARTY | A JORNADA</title>
     
-    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1483269881163022397/1485115915921133660/Geane_party.png?ex=69c0b17a&is=69bf5ffa&hm=f335d0f95396012803bfec8baab01afd9f3c3d043fd484c6a717efd12183104d&">
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1483269881163022397/1486186211390263336/IMG-20260325-WA0010.jpg">
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-
         :root {
-            --nike-black: #111;
-            --nike-gray: #f5f5f5;
-            --accent: #4db4fc; 
-            --success: #00c853;
+            --bg: #050505;
+            --gold-light: #F9E5AF;
+            --gold-main: #D4AF37;
+            --gold-dark: #A67C00;
+            --white: #FFFFFF;
+            --gray: #121212;
+            --accent: #25D366;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #fff; color: var(--nike-black); overflow-x: hidden; }
-
-        header { padding: 30px 20px 10px; text-align: center; background: #fff; }
-        header a { text-decoration: none; color: inherit; }
-        header h1 { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; margin: 0; text-transform: uppercase; }
-
-        #btn-voltar {
-            position: fixed; top: 15px; left: 15px; padding: 10px 16px; border-radius: 30px;
-            font-weight: 900; text-transform: uppercase; font-size: 0.7rem; z-index: 2000;
-            cursor: pointer; color: white; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: none; transition: transform 0.3s ease;
-            animation: rgb-animation 6s infinite linear;
+        @keyframes ultraGlow {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: translateY(0); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: translateY(-5px); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: translateY(0); }
         }
 
-        @keyframes rgb-animation {
-            0% { background-color: #ff0000; } 20% { background-color: #ff00ff; }
-            40% { background-color: #0000ff; } 60% { background-color: #00ffff; }
-            80% { background-color: #00ff00; } 100% { background-color: #ff0000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--white); 
+            line-height: 1.4;
+            padding-bottom: 150px;
         }
 
-        .nav-container { position: sticky; top: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 999; padding: 10px 0; border-bottom: 1px solid #eee; }
-        .nav-categorias { display: flex; justify-content: flex-start; gap: 15px; overflow-x: auto; padding: 5px 20px 15px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        .nav-categorias::-webkit-scrollbar { display: none; }
-        .nav-categorias a { text-decoration: none; color: var(--nike-black); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; cursor: pointer; background: var(--nike-gray); padding: 8px 15px; border-radius: 20px; }
+        .container { max-width: 550px; margin: 0 auto; padding: 0 20px; }
 
-        .search-container { max-width: 600px; margin: 0 auto 10px; padding: 0 20px; }
-        .search-bar { width: 100%; padding: 14px 20px; border-radius: 12px; border: 1px solid #eee; background: var(--nike-gray); font-family: inherit; outline: none; font-size: 16px; }
-
-        .tiktok-float { position: fixed; bottom: 100px; right: 20px; background-color: #000; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 998; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .tiktok-float img { width: 22px; filter: invert(1); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 10px 20px 100px; }
-        h2.section-title { font-weight: 900; font-size: 1.4rem; text-transform: uppercase; margin: 30px 0 15px 0; border-left: 4px solid var(--accent); padding-left: 12px; }
-
-        .vitrine-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 40px; }
-
-        .produto-card { background: #fff; cursor: pointer; transition: transform 0.2s; overflow: hidden; display: flex; flex-direction: column; }
-        .produto-card:active { transform: scale(0.96); }
+        header { padding: 60px 0 40px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         
-        .img-box { width: 100%; aspect-ratio: 1/1; background: var(--nike-gray); border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold-main);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 25px;
+        }
 
-        .info-box { padding: 10px 2px; }
-        .info-box h3 { margin: 0; font-size: 0.85rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden; }
-        .preco { font-weight: 900; font-size: 1rem; margin-top: 5px; display: block; color: var(--nike-black); }
-        .tag-local { display: inline-block; background: var(--nike-gray); color: #888; font-size: 0.55rem; font-weight: 900; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; margin-bottom: 5px; }
+        .tagline { 
+            font-size: 0.75rem; 
+            letter-spacing: 4px; 
+            color: var(--gold-main); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            display: block; 
+        }
 
-        .btn-add { background: var(--nike-black); color: #fff; border: none; padding: 20px; width: 100%; border-radius: 50px; font-weight: 800; margin-top: 15px; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        h1 { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            letter-spacing: -2px; 
+            line-height: 0.9; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+        }
+        h1 span { 
+            background: linear-gradient(to bottom, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        #carrinho-fixo { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--nike-black); color: white; padding: 18px; border-radius: 15px; z-index: 1000; cursor: pointer; text-align: center; text-transform: uppercase; font-weight: 900; font-size: 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none;}
+        .intro-text { font-size: 1.15rem; opacity: 0.8; font-weight: 400; margin-bottom: 30px; text-align: center; max-width: 90%; }
+
+        .btn-cta {
+            display: block !important;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-main)) !important;
+            color: #000 !important;
+            padding: 24px !important;
+            border-radius: 15px !important;
+            font-weight: 900 !important;
+            font-size: 1.3rem !important;
+            text-decoration: none !important;
+            text-align: center !important;
+            text-transform: uppercase !important;
+            margin: 40px 0 !important;
+            position: relative !important;
+            z-index: 9999 !important;
+            animation: ultraGlow 3s infinite ease-in-out;
+            border: none !important;
+            letter-spacing: 1px;
+        }
+
+        .access-section { margin: 60px 0; }
+        .access-title { 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            margin-bottom: 30px; 
+            text-transform: uppercase; 
+            color: var(--gold-main);
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+        }
         
-        #modal-carrinho, #modal-bio { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 30px 20px; border-radius: 25px 25px 0 0; z-index: 1001; max-height: 90vh; overflow-y: auto; box-shadow: 0 -10px 40px rgba(0,0,0,0.2); }
-        #modal-bio { text-align: center; }
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; backdrop-filter: blur(4px); }
-        
-        .bio-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; background: var(--nike-gray); margin-bottom: 15px; }
+        .grid-access { display: grid; gap: 12px; }
+        .access-item { 
+            background: rgba(255, 255, 255, 0.03); 
+            padding: 20px; 
+            border-radius: 12px; 
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+        .access-item:hover {
+            border-color: var(--gold-main);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .access-item b { color: var(--gold-main); margin-right: 15px; font-size: 1.3rem; }
 
-        .item-lista { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
-        .qtd-controls { display: flex; align-items: center; gap: 12px; }
-        .btn-qtd { width: 32px; height: 32px; border-radius: 10px; border: 1px solid #ddd; background: #fff; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .input-morada { width: 100%; padding: 16px; background: var(--nike-gray); border: 1px solid #eee; border-radius: 12px; margin: 20px 0; font-family: inherit; font-size: 16px; }
+        .bonus { 
+            background: var(--gold-main); 
+            color: #000; 
+            font-size: 0.65rem; 
+            font-weight: 900; 
+            margin-left: 10px; 
+            padding: 3px 8px; 
+            border-radius: 4px; 
+            text-transform: uppercase;
+        }
 
-        @media (min-width: 769px) {
-            .vitrine-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-            .info-box h3 { font-size: 1.1rem; }
-            header h1 { font-size: 2.5rem; }
-            .bio-img { max-width: 400px; margin: 0 auto 15px; }
+        .pricing { text-align: center; margin: 60px 0; padding: 40px 0; background: linear-gradient(to bottom, transparent, #0a0a0a); }
+        .old-price { color: #666; text-decoration: line-through; font-size: 1.2rem; font-weight: 600; }
+        .new-price { 
+            font-size: 6.5rem; 
+            font-weight: 900; 
+            display: block; 
+            margin: -10px 0; 
+            letter-spacing: -5px; 
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .new-price small { font-size: 1.8rem; vertical-align: top; margin-right: 5px; -webkit-text-fill-color: var(--white); }
+
+        .footer-nav { margin: 40px 0; border-top: 1px solid #222; }
+        .nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #111;
+            text-decoration: none;
+            color: var(--white);
+        }
+        .nav-link strong { font-size: 1.1rem; text-transform: uppercase; color: var(--gold-light); }
+        .status { color: var(--accent); font-size: 0.7rem; font-weight: 800; display: block; margin-top: 4px; letter-spacing: 1px; }
+
+        .copyright { text-align: center; font-size: 0.65rem; color: #444; margin-top: 60px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 2.8rem; }
+            .new-price { font-size: 5rem; }
         }
     </style>
 </head>
-<body id="body-main">
-
-    <button id="btn-voltar" onclick="resetarFiltros()">← Voltar</button>
-
-    <a href="https://www.tiktok.com/@geaneparty" target="_blank" class="tiktok-float">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-    </a>
-
-    <header>
-        <a href="javascript:void(0)" onclick="resetarFiltros(); window.scrollTo(0,0);">
-            <h1>GEANE PARTY</h1>
-        </a>
-    </header>
-
-    <div class="nav-container">
-        <div class="nav-categorias">
-            <a onclick="filtrarCategoria('cilindros')">Cilindros</a>
-            <a onclick="filtrarCategoria('arcos')">Arcos & Painéis</a>
-            <a onclick="filtrarCategoria('mdf')">Mobiliário MDF</a>
-        </div>
-        <div class="search-container">
-            <input type="text" id="main-search" class="search-bar" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
-        </div>
-    </div>
-
-    <div id="carrinho-fixo" onclick="abrirCarrinho()">Ver Sacola (<span id="cart-count">0</span>)</div>
-    <div id="overlay" onclick="fecharTudo()"></div>
-    
-    <div id="modal-bio">
-        <div id="bio-content"></div>
-        <button id="btn-add-bio" class="btn-add">Adicionar à Sacola</button>
-        <button onclick="fecharTudo()" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer; font-weight:700; font-size: 0.8rem; text-transform: uppercase;">Fechar</button>
-    </div>
-
-    <div id="modal-carrinho">
-        <h2 style="font-weight: 900; margin-top: 0;">Sua Sacola</h2>
-        <div id="lista-itens"></div>
-        <input type="text" id="input-morada" class="input-morada" placeholder="Endereço de entrega em Portugal">
-        <div style="display:flex; justify-content: space-between; font-weight: 900; font-size: 1.2rem; margin: 25px 0;">
-            <span>TOTAL</span><span id="total-cart">€0,00</span>
-        </div>
-        <button onclick="enviarWhatsApp()" class="btn-add" style="background: var(--accent);">Finalizar no WhatsApp</button>
-        <button onclick="fecharTudo()" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer; font-weight: 700; text-transform: uppercase; font-size: 0.7rem;">Continuar Comprando</button>
-    </div>
+<body>
 
     <div class="container">
-        <div class="section-wrapper" id="sec-cilindros">
-            <h2 class="section-title">Cilindros</h2>
-            <div class="vitrine-grid">
-                <div class="produto-card" onclick="verBio('Trio de Cilindros', 185, 'https://media.discordapp.net/attachments/1483269881163022397/1485096201811660900/36A0D321-C4C6-489C-95FE-C4D924B4A644.png?ex=69c147de&is=69bff65e&hm=66dd872e4e0b4b7b9a068a5fc2beae18b318f6b2c380adc1dc063679d7d241c7&=&format=webp&quality=lossless&width=631&height=631')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485096201811660900/36A0D321-C4C6-489C-95FE-C4D924B4A644.png?ex=69c147de&is=69bff65e&hm=66dd872e4e0b4b7b9a068a5fc2beae18b318f6b2c380adc1dc063679d7d241c7&=&format=webp&quality=lossless&width=631&height=631" alt="Trio de Cilindros"></div>
-                    <div class="info-box">
-                        <span class="tag-local">Cilindros</span>
-                        <h3>Trio de Cilindros</h3>
-                        <span class="preco">€185,00</span>
-                    </div>
-                </div>
-                <div class="produto-card" onclick="verBio('Cilindro Ripado', 220, 'https://media.discordapp.net/attachments/1483269881163022397/1485109159186792478/3A8803DD-B1AD-4BFD-B547-CCCA53DFCE16.png?ex=69c153ef&is=69c0026f&hm=51318728a052cb7afa6538d6971742fe7ab176a9846ac2dc818075bbdbd0234e&=&format=webp&quality=lossless&width=557&height=557')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485109159186792478/3A8803DD-B1AD-4BFD-B547-CCCA53DFCE16.png?ex=69c153ef&is=69c0026f&hm=51318728a052cb7afa6538d6971742fe7ab176a9846ac2dc818075bbdbd0234e&=&format=webp&quality=lossless&width=557&height=557" alt="Cilindro Ripado"></div>
-                    <div class="info-box">
-                        <span class="tag-local">Cilindros</span>
-                        <h3>Cilindro Ripado</h3>
-                        <span class="preco">€220,00</span>
-                    </div>
-                </div>
+        <header>
+            <img src="https://cdn.discordapp.com/attachments/1483269881163022397/1486186211390263336/IMG-20260325-WA0010.jpg?ex=69c49644&is=69c344c4&hm=612033bb95e5082198fdefac35071e961f1459466d194b444b8ae8bdcde6d9a3&" alt="Geane Santos" class="profile-photo">
+            <span class="tagline">O Próximo Nível do Empreendedorismo</span>
+            <h1>JORNADA <br><span>PEGUE & MONTE</span></h1>
+        </header>
+
+        <section class="hero">
+            <p class="intro-text">Onde você aprende a construir um negócio lucrativo com baixo investimento e orientações de quem já chegou lá.</p>
+            <a href="https://pay.kiwify.com/3Iy5S9b" class="btn-cta">EU QUERO O MEU LUCRO</a>
+        </section>
+
+        <section class="access-section">
+            <h2 class="access-title">Conteúdo da Jornada:</h2>
+            <div class="grid-access">
+                <div class="access-item"><b>✦</b> Estruturação Inicial do Negócio</div>
+                <div class="access-item"><b>✦</b> Peças Essenciais para Acervo Inicial</div>
+                <div class="access-item"><b>✦</b> Temas de Alta Demanda no Mercado</div>
+                <div class="access-item"><b>✦</b> Custos Reais e Planilha de Início</div>
+                <div class="access-item"><b>✦</b> Estratégia de Divulgação e Clientes</div>
+                <div class="access-item"><b>✦</b> Precificação Inteligente</div>
+                <div class="access-item"><b>✦</b> Atendimento Direto no WhatsApp</div>
+                <div class="access-item"><b>✦</b> Balão Delivery ou Take Away <span class="bonus">BÔNUS</span></div>
+                <div class="access-item"><b>✦</b> Lista de Fornecedores de Elite</div>
+                <div class="access-item"><b>✦</b> Equipamentos e Materiais Indispensáveis</div>
+                <div class="access-item"><b>✦</b> Análise e Estruturação de Instagram</div>
+                <div class="access-item"><b>✦</b> Tira Dúvidas: Suporte com a Geane</div>
             </div>
+        </section>
+
+        <div class="pricing">
+            <span class="old-price">DE 250,00€ POR APENAS</span>
+            <span class="new-price"><small>€</small>64,94</span>
+            <p style="color: var(--accent); font-weight: 800; margin-top: 15px; letter-spacing: 1px; font-size: 0.85rem;">ACESSO IMEDIATO APÓS O PAGAMENTO</p>
         </div>
 
-        <div class="section-wrapper" id="sec-arcos">
-            <h2 class="section-title">Arcos & Painéis</h2>
-            <div class="vitrine-grid">
-                <div class="produto-card" onclick="verBio('Arco Romano', 169, 'https://media.discordapp.net/attachments/1483269881163022397/1485097326967259327/Sd3d9697be18a415db400fccebd3cbe0d5.png?ex=69c148ea&is=69bff76a&hm=0a1ae4251ad88b5cf120575158866d947cdde2bf8a97adb59c2f1c4929fc2928&=&format=webp&quality=lossless&width=480&height=480')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485097326967259327/Sd3d9697be18a415db400fccebd3cbe0d5.png?ex=69c148ea&is=69bff76a&hm=0a1ae4251ad88b5cf120575158866d947cdde2bf8a97adb59c2f1c4929fc2928&=&format=webp&quality=lossless&width=480&height=480" alt="Arco Romano"></div>
-                    <div class="info-box">
-                        <span class="tag-local">Arcos</span>
-                        <h3>Arco Romano</h3>
-                        <span class="preco">€169,00</span>
-                    </div>
-                </div>
-                <div class="produto-card" onclick="verBio('Painel Redondo Profissional', 139, 'https://media.discordapp.net/attachments/1483269881163022397/1485106117146312806/Sd1f887bdaab14d058bea82ac73dc6d4dG.png?ex=69c1511a&is=69bfff9a&hm=98dd65cd5570fdbe897f39812c5d0f158bb799d8c2e17476dd6cc62c85ebbc26&=&format=webp&quality=lossless&width=536&height=536')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485106117146312806/Sd1f887bdaab14d058bea82ac73dc6d4dG.png?ex=69c1511a&is=69bfff9a&hm=98dd65cd5570fdbe897f39812c5d0f158bb799d8c2e17476dd6cc62c85ebbc26&=&format=webp&quality=lossless&width=536&height=536" alt="Painel Redondo"></div>
-                    <div class="info-box">
-                        <span class="tag-local">Arcos</span>
-                        <h3>Painel Redondo Profissional</h3>
-                        <span class="preco">€139,00</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <a href="https://pay.kiwify.com/3Iy5S9b" class="btn-cta">
+            GARANTIR MINHA VAGA NA JORNADA
+        </a>
 
-        <div class="section-wrapper" id="sec-mdf">
-            <h2 class="section-title">Mobiliário MDF</h2>
-            <div class="vitrine-grid">
-                <div class="produto-card" onclick="verBio('Mesa Boiserie', 150, 'https://media.discordapp.net/attachments/1483269881163022397/1485103210606891138/995B4932-2102-4239-A843-2967A58E3238.png?ex=69c14e65&is=69bffce5&hm=1a8c6decd2c52309587c09f122ef07e5400c1958b69522e74ae73b33e654dcfa&=&format=webp&quality=lossless&width=557&height=557')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485103210606891138/995B4932-2102-4239-A843-2967A58E3238.png?ex=69c14e65&is=69bffce5&hm=1a8c6decd2c52309587c09f122ef07e5400c1958b69522e74ae73b33e654dcfa&=&format=webp&quality=lossless&width=557&height=557" alt="Mesa Boiserie"></div>
-                    <div class="info-box">
-                        <span class="tag-local">MDF</span>
-                        <h3>Mesa Boiserie</h3>
-                        <span class="preco">€150,00</span>
-                    </div>
+        <nav class="footer-nav">
+            <a href="https://wa.me/351961388502?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20o%20Curso%20Jornada%20Pegue%20e%20Monte!" class="nav-link" target="_blank">
+                <div>
+                    <strong>Fale com o Suporte</strong>
+                    <span class="status">EQUIPE ONLINE DISPONÍVEL</span>
                 </div>
-                <div class="produto-card" onclick="verBio('Mesa Orgânica G', 99, 'https://media.discordapp.net/attachments/1483269881163022397/1485319316516769812/B02EDF55-3E59-45BA-8247-4A73366468FC.png?ex=69c16ee8&is=69c01d68&hm=0b02af711e8746b753476d50119906a3dda37dd648da00c9cc7b17e8d9f196ad&=&format=webp&quality=lossless&width=557&height=557')">
-                    <div class="img-box"><img src="https://media.discordapp.net/attachments/1483269881163022397/1485319316516769812/B02EDF55-3E59-45BA-8247-4A73366468FC.png?ex=69c16ee8&is=69c01d68&hm=0b02af711e8746b753476d50119906a3dda37dd648da00c9cc7b17e8d9f196ad&=&format=webp&quality=lossless&width=557&height=557" alt="Mesa Orgânica"></div>
-                    <div class="info-box">
-                        <span class="tag-local">MDF</span>
-                        <h3>Mesa Orgânica G</h3>
-                        <span class="preco">€99,00</span>
-                    </div>
+                <span style="color: var(--gold-main)">CONVERSAR →</span>
+            </a>
+            
+            <a href="https://www.tiktok.com/@geaneparty" class="nav-link" target="_blank">
+                <div>
+                    <strong>Acompanhe os Bastidores</strong>
+                    <span style="font-size: 0.8rem; color: #666;">@GEANEPARTY</span>
                 </div>
-            </div>
-        </div>
+                <span style="color: var(--gold-main)">VER →</span>
+            </a>
+        </nav>
+
+        <p class="copyright">Ação vence o medo de começar. &copy; 2026 GEANE PARTY.</p>
     </div>
 
-    <script>
-        let carrinho = [];
-
-        function verBio(nome, preco, img) {
-            const content = `
-                <img src="${img}" class="bio-img">
-                <h2 style="margin:0; font-weight:900; text-transform:uppercase; font-size:1.3rem; letter-spacing:-0.5px;">${nome}</h2>
-                <div class="preco" style="font-size:1.5rem; color:var(--nike-black); margin-top:5px;">€${preco.toFixed(2).replace('.', ',')}</div>
-            `;
-            document.getElementById('bio-content').innerHTML = content;
-            document.getElementById('btn-add-bio').onclick = function() {
-                adicionar(nome, preco);
-                fecharTudo();
-            };
-            document.getElementById('modal-bio').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function fecharTudo() {
-            document.getElementById('modal-bio').style.display = 'none';
-            document.getElementById('modal-carrinho').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        function adicionar(nome, preco) {
-            const item = carrinho.find(i => i.nome === nome);
-            if (item) { item.qtd++; } else { carrinho.push({nome, preco, qtd: 1}); }
-            document.getElementById('carrinho-fixo').style.display = 'block';
-            atualizarResumo();
-        }
-
-        function mudarQtd(nome, delta) {
-            const index = carrinho.findIndex(i => i.nome === nome);
-            if (index !== -1) {
-                carrinho[index].qtd += delta;
-                if (carrinho[index].qtd <= 0) carrinho.splice(index, 1);
-            }
-            if (carrinho.length === 0) {
-                document.getElementById('carrinho-fixo').style.display = 'none';
-                fecharTudo();
-            }
-            atualizarResumo();
-        }
-
-        function atualizarResumo() {
-            const totalItens = carrinho.reduce((sum, i) => sum + i.qtd, 0);
-            const valorTotal = carrinho.reduce((sum, i) => sum + (i.preco * i.qtd), 0);
-            document.getElementById('cart-count').innerText = totalItens;
-            document.getElementById('total-cart').innerText = "€" + valorTotal.toFixed(2).replace('.', ',');
-            let html = "";
-            carrinho.forEach(item => {
-                html += `<div class="item-lista">
-                    <div><strong style="font-size:0.9rem">${item.nome}</strong><br><small>€${item.preco}</small></div>
-                    <div class="qtd-controls">
-                        <button class="btn-qtd" onclick="mudarQtd('${item.nome}', -1)">-</button>
-                        <span style="font-weight:900; width: 20px; text-align:center">${item.qtd}</span>
-                        <button class="btn-qtd" onclick="mudarQtd('${item.nome}', 1)">+</button>
-                    </div>
-                </div>`;
-            });
-            document.getElementById('lista-itens').innerHTML = html || "Sacola vazia";
-        }
-
-        function abrirCarrinho() { 
-            document.getElementById('modal-carrinho').style.display = 'block'; 
-            document.getElementById('overlay').style.display = 'block'; 
-        }
-        
-        function filtrarCategoria(catId) {
-            document.getElementById('btn-voltar').style.display = 'block';
-            document.querySelectorAll('.section-wrapper').forEach(sec => {
-                if(sec.id === 'sec-' + catId) sec.style.display = 'block';
-                else sec.style.display = 'none';
-            });
-            window.scrollTo(0,0);
-        }
-
-        function resetarFiltros() {
-            document.getElementById('btn-voltar').style.display = 'none';
-            document.getElementById('main-search').value = "";
-            document.querySelectorAll('.produto-card').forEach(c => c.style.display = "");
-            document.querySelectorAll('.section-wrapper').forEach(sec => sec.style.display = 'block');
-            window.scrollTo(0,0);
-        }
-
-        function filtrarProdutos() {
-            let input = document.getElementById('main-search').value.toLowerCase();
-            let cards = document.getElementsByClassName('produto-card');
-            if (input.length > 0) {
-                document.getElementById('btn-voltar').style.display = 'block';
-                for (let i = 0; i < cards.length; i++) {
-                    let nome = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-                    cards[i].style.display = nome.includes(input) ? "" : "none";
-                }
-            } else {
-                resetarFiltros();
-            }
-        }
-
-        function enviarWhatsApp() {
-            const morada = document.getElementById('input-morada').value;
-            if (!morada) return alert("Por favor, informe o endereço de entrega!");
-            
-            const valorTotal = carrinho.reduce((sum, i) => sum + (i.preco * i.qtd), 0);
-            
-            let msg = `*INTERESSE EM COMPRA - GEANE PARTY*\n\n`;
-            msg += `Olá! Tenho interesse nos seguintes itens:\n\n`;
-            
-            carrinho.forEach(i => {
-                const subtotal = i.preco * i.qtd;
-                msg += ` ${i.qtd}x ${i.nome} - €${subtotal.toFixed(2).replace('.', ',')}\n`;
-            });
-
-            msg += `\n💰 *TOTAL:* €${valorTotal.toFixed(2).replace('.', ',')}`;
-            msg += `\n📍 *ENTREGA:* ${morada}`;
-
-            const fone = "351922126726";
-            window.open(`https://api.whatsapp.com/send?phone=${fone}&text=${encodeURIComponent(msg)}`);
-        }
-    </script>
 </body>
 </html>
